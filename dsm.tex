@@ -1,0 +1,150 @@
+\documentclass[aspectratio=169,t]{beamer}
+\usefonttheme[onlymath]{serif}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage[vlined]{algorithm2e}
+\usepackage{anyfontsize}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta}
+\tikzset{%
+	>={Latex[width=2mm,length=2mm]},
+	%Colors
+	blackStyle/.style = {draw=black, fill=lightgray},
+	tealStyle/.style = {draw=MyTeal, fill=MyLtTeal},
+	coralStyle/.style = {draw=MyCoral, fill=MyLtCoral},
+	sandStyle/.style = {draw=MySand, fill=MyLtSand},
+	%Base Styles
+	base/.style = {
+		draw=black, fill=white, thick,
+		text centered, font=\sffamily, inner sep=.2cm},
+	baseVar/.style = {base, rectangle, rounded corners,
+		minimum width=1cm, minimum height=1cm},
+	baseOp/.style = {base, ellipse,
+		minimum width=1cm, minimum height=1cm,
+		align=center},
+	baseLine/.style = {thick},
+	%Colored Styles
+	algNode/.style = {baseOp, blackStyle},
+	algLine/.style = {baseLine, draw=black},
+	%
+	givNode/.style = {baseVar, tealStyle},
+	givLine/.style = {baseLine, draw=MyTeal},
+	%
+	genNode/.style = {baseVar, sandStyle},
+	genLine/.style = {baseLine, draw=MySand},
+	%
+	outNode/.style = {baseVar, coralStyle},
+	outLine/.style = {baseLine, draw=MyCoral},
+}
+\usepackage[acronym]{glossaries}
+\makeglossaries
+
+\usepackage{beamerthemesplit}
+\usetheme[compress]{Heidelberg}
+\definecolor{unirot}{rgb}{0.5976525,0,0}
+\usecolortheme[named=unirot]{structure}
+
+\title{Discrete Morse Theory}
+\author{Bryan Wolfford}
+
+\institute[Uni HD]{
+	Universität Heidelberg\\
+	Interdisciplinary Center for Scientific Computing\\
+	Forensic Computational Geometry Laboratory\\
+	\color{unirot}{wolfford@stud.uni-heidelberg.de}
+}
+\date{\today}
+
+\begin{document}
+%\input{myCommands.tex}
+%\input{chapters/Z2-Glossary.tex}
+\setlength{\intextsep}{0pt}
+\def\hilite<#1>{\temporal<#1>{\color{black}}{\color{unirot}}{\color{gray}}}
+
+\iffalse
+\fi
+%------------------------------------------------
+\frame[plain]{
+	\titlepage
+}
+
+%------------------------------------------------
+\frame{\frametitle{Outline}
+	%\tableofcontents[hideallsubsections]
+	\begin{itemize}
+		\item Motivation \& Introduction \pause
+		\item Discrete Morse Theory
+		%\begin{itemize}
+		%	\item Mathematical Foundation
+		%	\item Serial Algorithm
+		%\end{itemize} \pause
+		%\item Exploiting Parallelism
+		%\begin{itemize}
+		%	\item Basics
+		%	\item Analysis of the Serial Algorithm
+		%	\item Parallel Algorithm
+		%\end{itemize} \pause
+		%\item Experiments \& Evaluation
+		%\begin{itemize}
+		%	\item Filter Response on Synthetic and Acquired \tdd{}
+		%	\item Performance of the Parallel Algorithm
+		%\end{itemize} \pause
+		\item Conclusions
+	\end{itemize}
+}
+
+
+
+
+%================================================
+%================================================
+\section{Motivation \& Introduction}
+
+%------------------------------------------------
+\frame{\frametitle{...}
+	\begin{columns}[T]
+		\begin{column}{.45\textwidth}
+			\begin{itemize}
+				\item Item 1
+			\end{itemize}
+			\begin{columns}[T]
+				\begin{column}{.55\textwidth}
+					\includegraphics[width=\textwidth]{example-image-a.png}
+				\end{column}
+				\begin{column}{.45\textwidth}
+					\includegraphics[width=\textwidth]{example-image-b.png}
+					\includegraphics[width=\textwidth]{example-image-c.png}
+				\end{column}
+			\end{columns}
+		\end{column}
+		\begin{column}{.475\textwidth}
+			%\vspace*{4mm}
+			\begin{itemize}
+				\item Item 2
+				\item Item 3
+			\end{itemize}
+			\vspace*{4mm}
+			\begin{columns}[T]
+				\begin{column}{.1\textwidth}
+				\end{column}
+				\begin{column}{.45\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{example-image-a.png}
+					Before smoothing
+				\end{column}
+				\begin{column}{.45\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{example-image-b.png}
+					After smoothing
+				\end{column}
+			\end{columns}
+		\end{column}
+	\end{columns}
+}
+%\fi
+\end{document}
