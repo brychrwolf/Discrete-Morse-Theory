@@ -25,11 +25,11 @@ cleanDsm:
 
 
 .PHONY: figures
-svgs:
-	cd figures && $(MAKE)
+figures:
+	cd figures/gimp && $(MAKE)
 
-cleanSvgs:
-	cd figures && make clean
+cleanFigures:
+	cd figures/gimp && make clean
 
 
 
