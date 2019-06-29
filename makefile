@@ -19,7 +19,6 @@ once:
 	$(ETIME)
 
 cleanDsm:
-	cd figures && $(MAKE) clean
 	rm -f dsm.aux dsm.log dsm.nav dsm.out dsm.pdf dsm.snm dsm.toc dsm.acn dsm.acr dsm.alg dsm.glg dsm.glo dsm.gls dsm.glsdefs dsm.ist
 
 
@@ -33,7 +32,7 @@ cleanFigures:
 
 
 
-clean: cleanDSM
+clean: cleanDsm
 
-cleanAll: cleanDSM cleanFigures
+cleanAll: cleanDsm cleanFigures
 
