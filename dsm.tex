@@ -675,7 +675,6 @@
 	\begin{columns}[T]
 		\begin{column}{.4\textwidth}
 			\centering
-			%\vspace{-2mm}
 			\includegraphics[width=.9\textwidth]{figures/gimp/sandstone_a.png}\\
 			A 200x200 pixel image of a section of sandstone
 		\end{column}
@@ -683,7 +682,7 @@
 			\centering
 			\includegraphics[width=.6\textwidth]{figures/gimp/sandstone_b.png}\\
 			Critical cells of the discrete Morse function derived from by applying the ProcessLowerStars. \\
-			Blue for 0-cells, Green for 1-cells, Red for 2-cells
+			{\color{blue}Blue} for 0-cells, {\color{green}Green} for 1-cells, {\color{red}Red} for 2-cells
 		\end{column}
 	\end{columns}
 }
@@ -691,15 +690,22 @@
 %------------------------------------------------
 \frame{\frametitle{Sandstone - Subsets}
 	\begin{columns}[T]
-		\begin{column}{.5\textwidth}
+		\begin{column}{.4\textwidth}
 			\centering
-			\includegraphics[width=.8\textwidth]{figures/gimp/sandstone_a.png}
+			\includegraphics[width=.9\textwidth]{figures/gimp/sandstone_a.png}\\
+			A 200x200 pixel image of a section of sandstone
 		\end{column}
-		\begin{column}{.25\textwidth}
-			\includegraphics[width=\textwidth]{figures/gimp/sandstone_c.png}
+		\begin{column}{.32\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/sandstone_c.png}\\
+			{\color{blue}Blue} for the critical 0-cell that creates a 0-cycle\\
+			{\color{green}Green} for the critical 1-cell that destroys this 0-cycle.
 		\end{column}
-		\begin{column}{.2\textwidth}
-			\includegraphics[width=\textwidth]{figures/gimp/sandstone_d.png}
+		\begin{column}{.28\textwidth}
+			\includegraphics[width=\textwidth]{figures/gimp/sandstone_d.png}\\
+			\vspace{.9\baselineskip}
+			{\color{green}Green} for the 1-cell that creates a 1-cycle\\
+			{\color{red}Red} for the 2-cell which destroys the 1-cycle.
 		\end{column}
 	\end{columns}
 }
