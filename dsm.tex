@@ -57,7 +57,7 @@
 \frame[plain]{
 	\titlepage
 }
-\iffalse
+
 %------------------------------------------------
 \frame{\frametitle{Outline}
 	\begin{itemize}
@@ -82,25 +82,17 @@
 	\end{itemize}
 }
 
-
 %================================================
 %================================================
 \section{Motivation \& Background}
-
 %------------------------------------------------
-%TODO: populate 
 \frame{\frametitle{Motivation}
-	\begin{columns}[T]
-		\begin{column}{.33\textwidth}
-%			quantitative analysis of large 3D images. 
-%			geometric: volume, surface area, curvature
-%			Topological information is independent of geometric measures
-%			however, computational topology require a combinatorial complex (huge)
-%
-%			A grayscale digital image, which are functions defined on a discrete lattice
-%			cubical Complex, scale as O(n^3)
-%			Morse complex same topological information, encodes topo.changes in level sets
-%
+	\begin{itemize}
+		\item Quantitative analysis of large 3D images beyond geometric measures: i.e. volume, surface area, curvature \pause \\
+		\vspace{\baselineskip}
+		\item Topological information is independent of geometric measures, however, computational topology require a combinatorial complex (huge) \pause \\
+		\vspace{\baselineskip}
+		\item A grayscale digital image, which are functions defined on a discrete lattice	cubical Complex, scale as $O(n^3)$, while a Morse complex stores the same topological information.\\
 %			Morse Theory
 %				partions landscape into hills and dales
 %				relates critical points to topology of manifold using negative gradient flow
@@ -123,10 +115,8 @@
 %				gradient arrows one-to-one pairing of cells with faces
 %				unpaired cells are critical points
 %				<prese Cpm[lex arise from flow path between critical cells
-		\end{column}
-	\end{columns}
+	\end{itemize}
 }
-
 %------------------------------------------------
 \frame{\frametitle{3D Grayscale Digital Images}
 	\begin{columns}[T]
@@ -398,6 +388,9 @@
 %\frame{\frametitle{Persistant Homology}
 %}
 
+%================================================
+%================================================
+\section{Discrete Morse Theory}
 %------------------------------------------------
 \frame{\frametitle{Simple Homotopy}
 	\begin{itemize}
@@ -490,9 +483,9 @@
 
 
 
-%------------------------------------------------
-%------------------------------------------------
-\section{The Algorithms}
+%================================================
+%================================================
+\section{Examples \& Conclusions}
 %------------------------------------------------
 %\frame{\frametitle{The Algorithms}
 %	\begin{enumerate}
@@ -674,11 +667,13 @@
 	\begin{columns}[T]
 		\begin{column}{.4\textwidth}
 			\centering
+			\vspace{-2mm}
 			\includegraphics[width=.9\textwidth]{figures/gimp/sandstone_a.png}\\
 			A 200x200 pixel image of a section of sandstone
 		\end{column}
 		\begin{column}{.6\textwidth}
 			\centering
+			\vspace{-2mm}
 			\includegraphics[width=.6\textwidth]{figures/gimp/sandstone_b.png}\\
 			Critical cells of the discrete Morse function derived from by applying the ProcessLowerStars. \\
 			{\color{blue}Blue} for 0-cells, {\color{green}Green} for 1-cells, {\color{red}Red} for 2-cells
@@ -730,14 +725,15 @@
 %------------------------------------------------
 \frame{\frametitle{Outlook}
 	\begin{itemize}
-		\item Data Compression
+		\item Data Compression and Faster Algorithms
+		\item Forensic Computation Geometry
 		\item Geographic Information Systems
 		\item Medical Image Analysis
 		\begin{itemize}
 			\item Machine Learning
+			\item Compressed Sensing
 			\item Principle Componant Analysis
 		\end{itemize}
 	\end{itemize}		
 }
-
 \end{document}
