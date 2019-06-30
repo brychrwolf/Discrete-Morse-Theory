@@ -29,6 +29,9 @@
 		minimum width=1mm, minimum height=1mm},
 	baseLine/.style = {thick},
 }
+\pgfdeclarelayer{bg}    % declare background layer
+\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+
 \usepackage[acronym]{glossaries}
 \makeglossaries
 
@@ -81,7 +84,7 @@
 }
 
 
-
+\iffalse
 %================================================
 %================================================
 \section{Motivation \& Background}
@@ -143,7 +146,6 @@
 }
 
 %------------------------------------------------
-%TODO: add animated K with colors as each p-cell comes out
 \frame{\frametitle{$K$ and \emph{p-cells}}
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
@@ -189,34 +191,70 @@
 						\draw[blackStyle](\x,\y) circle[radius=1mm];
 			}\only<2>{
 				\foreach \x in {-12mm,  8mm, 28mm}
-					\draw[tealStyle](\x,-16mm) -- (\x, 24mm);
+					\draw[baseLine, tealStyle](\x,-16mm) -- (\x, 24mm);
 				\foreach \x in {-20mm,  0mm, 20mm}
-					\draw[tealStyle](\x,-20mm) -- (\x, 20mm);
+					\draw[baseLine, tealStyle](\x,-20mm) -- (\x, 20mm);
 				\foreach \x in {-28mm, -8mm, 12mm}
-					\draw[tealStyle](\x,-24mm) -- (\x, 16mm);
+					\draw[baseLine, tealStyle](\x,-24mm) -- (\x, 16mm);
 				
 				\foreach \y in {-16mm,  4mm, 24mm}
-					\draw[tealStyle](-12mm,\y) -- ( 28mm,\y);
+					\draw[baseLine, tealStyle](-12mm,\y) -- ( 28mm,\y);
 				\foreach \y in {-20mm,  0mm, 20mm}
-					\draw[tealStyle](-20mm,\y) -- ( 20mm,\y);
+					\draw[baseLine, tealStyle](-20mm,\y) -- ( 20mm,\y);
 				\foreach \y in {-24mm, -4mm, 16mm}
-					\draw[tealStyle](-28mm,\y) -- ( 12mm,\y);
-					
-					
-					\draw[tealStyle](-12mm,-16mm) -- (-28mm,-24mm);
-			}\only<3->{
-			}\only<4->{
-			}
-						
-
-				%\draw[->, indLine] (0mm, 1.5mm) -- (p1.north);
-
+					\draw[baseLine, tealStyle](-28mm,\y) -- ( 12mm,\y);
 				
+				\draw[baseLine, tealStyle](-12mm,-16mm) -- (-28mm,-24mm);
+				\draw[baseLine, tealStyle](  8mm,-16mm) -- ( -8mm,-24mm);
+				\draw[baseLine, tealStyle]( 28mm,-16mm) -- ( 12mm,-24mm);
+				
+				\draw[baseLine, tealStyle](-12mm,  4mm) -- (-28mm, -4mm);
+				\draw[baseLine, tealStyle](  8mm,  4mm) -- ( -8mm, -4mm);
+				\draw[baseLine, tealStyle]( 28mm,  4mm) -- ( 12mm, -4mm);
+				
+				\draw[baseLine, tealStyle](-12mm, 24mm) -- (-28mm, 16mm);
+				\draw[baseLine, tealStyle](  8mm, 24mm) -- ( -8mm, 16mm);
+				\draw[baseLine, tealStyle]( 28mm, 24mm) -- ( 12mm, 16mm);
+			}\only<3->{
+				\foreach \x in {-12mm,  8mm, 28mm}
+					\draw[baseLine, blackStyle](\x,-16mm) -- (\x, 24mm);
+				\foreach \x in {-20mm,  0mm, 20mm}
+					\draw[baseLine, blackStyle](\x,-20mm) -- (\x, 20mm);
+				\foreach \x in {-28mm, -8mm, 12mm}
+					\draw[baseLine, blackStyle](\x,-24mm) -- (\x, 16mm);
+				
+				\foreach \y in {-16mm,  4mm, 24mm}
+					\draw[baseLine, blackStyle](-12mm,\y) -- ( 28mm,\y);
+				\foreach \y in {-20mm,  0mm, 20mm}
+					\draw[baseLine, blackStyle](-20mm,\y) -- ( 20mm,\y);
+				\foreach \y in {-24mm, -4mm, 16mm}
+					\draw[baseLine, blackStyle](-28mm,\y) -- ( 12mm,\y);
+				
+				\draw[baseLine, blackStyle](-12mm,-16mm) -- (-28mm,-24mm);
+				\draw[baseLine, blackStyle](  8mm,-16mm) -- ( -8mm,-24mm);
+				\draw[baseLine, blackStyle]( 28mm,-16mm) -- ( 12mm,-24mm);
+				
+				\draw[baseLine, blackStyle](-12mm,  4mm) -- (-28mm, -4mm);
+				\draw[baseLine, blackStyle](  8mm,  4mm) -- ( -8mm, -4mm);
+				\draw[baseLine, blackStyle]( 28mm,  4mm) -- ( 12mm, -4mm);
+				
+				\draw[baseLine, blackStyle](-12mm, 24mm) -- (-28mm, 16mm);
+				\draw[baseLine, blackStyle](  8mm, 24mm) -- ( -8mm, 16mm);
+				\draw[baseLine, blackStyle]( 28mm, 24mm) -- ( 12mm, 16mm);
+			}\only<3>{
+				\begin{pgfonlayer}{bg}
+					\draw[draw=none,fill=MyLtTeal](-28mm,-24mm) -- (-28mm, 16mm) -- (-12mm, 24mm) -- ( 28mm, 24mm) -- ( 28mm,-16mm) -- ( 12mm,-24mm) -- cycle;
+    			\end{pgfonlayer}
+			}\only<4->{
+				\begin{pgfonlayer}{bg}
+					\draw[draw=none,fill=MyTeal](-28mm,-24mm) -- (-28mm, 16mm) -- (-12mm, 24mm) -- ( 28mm, 24mm) -- ( 28mm,-16mm) -- ( 12mm,-24mm) -- cycle;
+    			\end{pgfonlayer}
+			}
 			\end{tikzpicture}
 		\end{column}
 	\end{columns}
 }
- \iffalse
+
 %------------------------------------------------
 \frame{\frametitle{faces, cofaces, and complexes}
 	\begin{columns}[T]
@@ -237,7 +275,7 @@
 		\end{column}
 	\end{columns}
 }
-
+\fi
 %------------------------------------------------
 %TODO: add images for lower level cuts
 \frame{\frametitle{lower level cuts}
@@ -255,7 +293,7 @@
 		\end{column}
 	\end{columns}
 }
-
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Main Goal of the Paper}
 	%\begin{columns}[T]
