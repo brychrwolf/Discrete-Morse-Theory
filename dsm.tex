@@ -447,7 +447,6 @@
 	\emph{The combinatory nature of complexes makes this difficult!}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Discrete Vector Fields}
 	\begin{itemize}
@@ -458,23 +457,20 @@
 	\end{itemize}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
 \frame{\frametitle{V-Path}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item A {\color{MyTeal}V-path} is the the flow-line of a vector field in the discrete setting.
-				\item It is a sequence of cells: $\alpha^{(p)}_0, \beta^{(p+1)}_0, \alpha^{(p)}_1, \beta^{(p+1)}_1, \alpha^{(p)}_2, \ldots, \beta^{(p+1)}_{r-1}, \alpha^{(p)}_r $.
-				\item where $(\alpha_i, \beta_i) \in V, \beta_i > \alpha_{i+1}$, and $\alpha_i \neq \alpha_{i+1}$ for all $i = 0, \ldots, r-1$. 
-				\item A V-path is a {\color{MyTeal}non-trival closed V-path} if $\alpha_r = \alpha_0$ for $r \geq 1$. 
-				\item A discrete vector field is the gradient vector field of a discrete Morse function \emph{if and only if} there are \textbf{no} non-trivial closed V-paths.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+	A {\color{MyTeal}V-path} is the the flow-line of a vector field in the discrete setting.\\
+	It is a sequence of cells: 
+	\[\alpha^{(p)}_0, \beta^{(p+1)}_0, \alpha^{(p)}_1, \beta^{(p+1)}_1, \alpha^{(p)}_2, \ldots, \beta^{(p+1)}_{r-1}, \alpha^{(p)}_r\]
+	{\hfill such that \hfill}
+	%\begin{itemize}
+		\[(\alpha_i, \beta_i) \in V, \beta_i > \alpha_{i+1}, \text{ and } \alpha_i \neq \alpha_{i+1} \forall i \in \{0, \ldots, r-1\}\]
+	%\end{itemize} 
+	A V-path is a {\color{MyTeal}non-trival closed V-path} if $\alpha_r = \alpha_0$ for $r \geq 1$. 
+	A discrete vector field is the gradient vector field of a discrete Morse function \emph{if and only if} there are \textbf{no} non-trivial closed V-paths.
 }
+\iffalse
 
 %------------------------------------------------
 \frame{\frametitle{The discrete Morse theory, simple homotopy connection}
