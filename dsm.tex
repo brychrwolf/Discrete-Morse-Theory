@@ -502,23 +502,18 @@
 %	\end{enumerate}
 %}
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Constructing the Discrete Vector Field}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item Recall a filtration of $K$ is the sequence of subcomplexes which contain the cells in K that have no vertex with a grayscale value greater than some threshhold $t$, corresponding to the lower level cuts of the digital image.
-				\item The goal then is to construct a discrete Morse function on the cubical complex whose critical cells exactly match the changes in topology between successive elements of this filtration. 
-				\item We achieve this by using simple homotopy expansions to grow from one subcomplex to the next, and introduce critical cells only when a simple homotopy pairing cannot be found.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+	\begin{columns}[T]
+		\begin{column}{.7\textwidth}
+				\textbf{The goal}: construct a discrete Morse function on the $K$, whose critical cells exactly match the changes in topology between successive elements of a filtration of $K$.\\
+				\vspace{\baselineskip}
+				\textbf{The method}: use simple homotopy expansions to grow from one subcomplex to the next, introducing critical cells only when a simple homotopy pairing cannot be found.
+		\end{column}
+	\end{columns}
 }
-\iffalse
 
+\fi
 %------------------------------------------------
 \frame{\frametitle{Lower-Star}
 	%\begin{columns}[T]
@@ -535,6 +530,7 @@
 	%	\end{column}
 	%\end{columns}
 }
+\iffalse
 
 %------------------------------------------------
 \frame{\frametitle{ProcessLowerStars}
