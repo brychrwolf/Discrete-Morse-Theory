@@ -398,7 +398,6 @@
 %\frame{\frametitle{Persistant Homology}
 %}
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Simple Homotopy}
 	\begin{itemize}
@@ -413,29 +412,24 @@
 	\end{itemize}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
 \frame{\frametitle{Discrete Morse Functions}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item A function, $f : K \rightarrow \mathbb{R}$ is a {\color{MyTeal}discrete Morse function} if for every $\alpha^{(p)} \in K$, 
-				\begin{itemize}
-					\item $f$ takes a value less than or equal to $f(\alpha)$ on at most one coface of $\alpha$, and 
-					\item $f$ takes a value greater than or equal to $f(\alpha)$ on at most one face of $\alpha$. In other words,
-				\end{itemize}
-				\item $\# \{\beta^{(p+1)} > \alpha \rbar f(\beta) \leq  f(\alpha)\} \leq 1,$
-				\item and 
-				\item $\# \{\gamma^{(p-1)} < \alpha \rbar f(\gamma) \geq  f(\alpha)\} \leq 1,$
-				\item where $\#$ denotes the number of elements in the set. 
-				\item A cell, $\alpha^{(p)}$ is {\color{MyTeal}critical} if all cofaces take strictly greater values and all faces are strictly lower.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+	A function, $f : K \rightarrow \mathbb{R}$ is a {\color{MyTeal}discrete Morse function} if %for every $\alpha^{(p)} \in K$, 
+	%\begin{itemize}
+	%	\item $f$ takes a value less than or equal to $f(\alpha)$ on at most one coface of $\alpha$, and 
+	%	\item $f$ takes a value greater than or equal to $f(\alpha)$ on at most one face of $\alpha$. In other words,
+	%\end{itemize}
+	\vspace{-1\baselineskip}
+	\begin{center}
+		\[1 \geq \#\{\beta^{(p+1)} > \alpha \rbar f(\beta) \leq f(\alpha)\},\]
+		and 
+		\[1 \geq \# \{\gamma^{(p-1)} < \alpha \rbar f(\gamma) \geq  f(\alpha)\}.\]
+	\end{center}
+	A cell, $\alpha^{(p)}$ is {\color{MyTeal}critical} if all cofaces take strictly greater function values, and all faces take values which are strictly lower.
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Non-Critical Cells}
 	%\begin{columns}[T]
