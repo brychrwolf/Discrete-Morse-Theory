@@ -56,10 +56,9 @@
 \frame[plain]{
 	\titlepage
 }
-
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Outline}
-	%\tableofcontents[hideallsubsections]
 	\begin{itemize}
 		\item Motivation \& Background
 		\begin{itemize}
@@ -83,12 +82,12 @@
 }
 
 
-\iffalse
 %================================================
 %================================================
 \section{Motivation \& Background}
 
 %------------------------------------------------
+%TODO: populate 
 \frame{\frametitle{Motivation}
 	\begin{columns}[T]
 		\begin{column}{.33\textwidth}
@@ -126,24 +125,27 @@
 		\end{column}
 	\end{columns}
 }
-
+\fi
 %------------------------------------------------
 \frame{\frametitle{3D Grayscale Digital Images}
 	\begin{columns}[T]
 		\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item $g : D \rightarrow \mathbb{R} $
-				\item $D \subset \mathbb{Z}^3 $ is rectangular subset of the discrete lattice: \\
-				\[ D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} \]
-				\item A point $x \in D$ is called a {\color{MyTeal}voxel} (or pixel in 2D).
-				%The algorithms presented in Section 3 apply without adjustment to 2D digital images.
-			\end{itemize}
+			$g : D \rightarrow \mathbb{R}$ where $D \subset \mathbb{Z}^3$ is rectangular subset of the discrete lattice$^\dagger$:
+			\[\hspace{2ex}D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} \]
+			A point $x \in D$ is called a {\color{MyTeal}voxel} (or pixel in 2D). \\
+			\vspace{3.0\baselineskip}
+			{\color{MyDarkGray}$^\dagger$The equations and algorithms apply with only minor adjustments to 2D digital images.}
 		\end{column}
 		\begin{column}{.33\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/galeCrater_Mars.png}\\
+			Gale Crater, Mars. \\
+			{\scriptsize MOLA/HIRISE/NASA/JPL-Caltech/ASU/UA}
 		\end{column}
 	\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{$K$ and \emph{p-cells}}
 	\begin{columns}[T]
@@ -753,6 +755,19 @@
 				\item 1,540,351 cells in the cubical complex
 				\item \hspace{4ex}4,093 cells in the Morse complex
 			\end{itemize}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Outlook}
+	\begin{columns}[T]
+		\begin{column}{.5\textwidth}
+			Data Compression
+			Geographic Information Systems
+			Medical Image Analysis
+				Machine Learning
+				Principle Componant Analysis
 		\end{column}
 	\end{columns}
 }

@@ -18,7 +18,10 @@ XCFS_OUTPUTS =  processLowerStars_voxel_a.png \
 				criticalPoints_minimum.png \
 				criticalPoints_saddle.png \
 				criticalPoints_maximum.png \
-				criticalPoints_monkeySaddle.png
+				criticalPoints_monkeySaddle.png \
+				tithoniumChasma_Mars.png \
+				LiDAR_laCueva_NewMexico.png \
+				galeCrater_Mars.png
 
 all: $(XCFS_OUTPUTS)
 
