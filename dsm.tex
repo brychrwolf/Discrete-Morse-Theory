@@ -24,25 +24,10 @@
 	%Base Styles
 	base/.style = {
 		draw=black, fill=white, thick,
-		text centered, font=\sffamily, inner sep=.2cm},
-	baseVar/.style = {base, rectangle, rounded corners,
-		minimum width=1cm, minimum height=1cm},
-	baseOp/.style = {base, ellipse,
-		minimum width=1cm, minimum height=1cm,
-		align=center},
+		text centered, font=\sffamily, inner sep=0mm},
+	baseVox/.style = {base, circle,
+		minimum width=1mm, minimum height=1mm},
 	baseLine/.style = {thick},
-	%Colored Styles
-	algNode/.style = {baseOp, blackStyle},
-	algLine/.style = {baseLine, draw=black},
-	%
-	givNode/.style = {baseVar, tealStyle},
-	givLine/.style = {baseLine, draw=MyTeal},
-	%
-	genNode/.style = {baseVar, sandStyle},
-	genLine/.style = {baseLine, draw=MySand},
-	%
-	outNode/.style = {baseVar, coralStyle},
-	outLine/.style = {baseLine, draw=MyCoral},
 }
 \usepackage[acronym]{glossaries}
 \makeglossaries
@@ -99,7 +84,7 @@
 
 %================================================
 %================================================
-\section{Motivation \& Introduction}
+\section{Motivation \& Background}
 
 %------------------------------------------------
 \frame{\frametitle{Motivation}
@@ -146,8 +131,8 @@
 		\begin{column}{.66\textwidth}
 			\begin{itemize}
 				\item $g : D \rightarrow \mathbb{R} $
-				\item where $D \subset \mathbb{Z}^3 $ is rectangular subset of the discrete lattice:
-				\item $D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} $
+				\item $D \subset \mathbb{Z}^3 $ is rectangular subset of the discrete lattice: \\
+				\[ D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} \]
 				\item A point $x \in D$ is called a {\color{MyTeal}voxel} (or pixel in 2D).
 				%The algorithms presented in Section 3 apply without adjustment to 2D digital images.
 			\end{itemize}
@@ -161,20 +146,77 @@
 %TODO: add animated K with colors as each p-cell comes out
 \frame{\frametitle{$K$ and \emph{p-cells}}
 	\begin{columns}[T]
-		\begin{column}{.66\textwidth}
-			$K$ is collection of all \emph{p-cells} built from voxels in D, with $p = \{0, 1, 2, 3\}$
+		\begin{column}{.6\textwidth}
+			$K$ is collection of all \emph{p-cells} built from voxels in D, \\
+			with $p = \{0, 1, 2, 3\}$
 			\begin{itemize}
-				\item (0-cells) are vertices (i.e. voxels)
-				\item (1-cells) are unit edges between voxels %whose coordinates differ by one in a single axis, 
-				\item (2-cells) are unit squares,
-				\item (3-cells) are unit cubes
+				\only<1->{
+					\item (0-cells) are vertices (i.e. voxels)
+				}\only<2->{
+					\item (1-cells) are unit edges between voxels %whose coordinates differ by one in a single axis,
+				}\only<3->{ 
+					\item (2-cells) are unit squares,
+				}\only<4->{
+					\item (3-cells) are unit cubes
+				}
 			\end{itemize}
 		\end{column}
-		\begin{column}{.33\textwidth}
+		\begin{column}{.4\textwidth}
+			\begin{tikzpicture}[node distance=0mm]
+			\only<1>{
+				\foreach \x in {-12mm,  8mm, 28mm}
+					\foreach \y in {-16mm,  4mm, 24mm}
+						\draw[tealStyle](\x,\y) circle[radius=1mm];
+
+				\foreach \x in {-20mm,  0mm, 20mm}
+					\foreach \y in {-20mm,  0mm, 20mm}
+						\draw[tealStyle](\x,\y) circle[radius=1mm];
+
+				\foreach \x in {-28mm, -8mm, 12mm}
+					\foreach \y in {-24mm, -4mm, 16mm}
+						\draw[tealStyle](\x,\y) circle[radius=1mm];
+			}\only<2->{
+				\foreach \x in {-12mm,  8mm, 28mm}
+					\foreach \y in {-16mm,  4mm, 24mm}
+						\draw[blackStyle](\x,\y) circle[radius=1mm];
+
+				\foreach \x in {-20mm,  0mm, 20mm}
+					\foreach \y in {-20mm,  0mm, 20mm}
+						\draw[blackStyle](\x,\y) circle[radius=1mm];
+
+				\foreach \x in {-28mm, -8mm, 12mm}
+					\foreach \y in {-24mm, -4mm, 16mm}
+						\draw[blackStyle](\x,\y) circle[radius=1mm];
+			}\only<2>{
+				\foreach \x in {-12mm,  8mm, 28mm}
+					\draw[tealStyle](\x,-16mm) -- (\x, 24mm);
+				\foreach \x in {-20mm,  0mm, 20mm}
+					\draw[tealStyle](\x,-20mm) -- (\x, 20mm);
+				\foreach \x in {-28mm, -8mm, 12mm}
+					\draw[tealStyle](\x,-24mm) -- (\x, 16mm);
+				
+				\foreach \y in {-16mm,  4mm, 24mm}
+					\draw[tealStyle](-12mm,\y) -- ( 28mm,\y);
+				\foreach \y in {-20mm,  0mm, 20mm}
+					\draw[tealStyle](-20mm,\y) -- ( 20mm,\y);
+				\foreach \y in {-24mm, -4mm, 16mm}
+					\draw[tealStyle](-28mm,\y) -- ( 12mm,\y);
+					
+					
+					\draw[tealStyle](-12mm,-16mm) -- (-28mm,-24mm);
+			}\only<3->{
+			}\only<4->{
+			}
+						
+
+				%\draw[->, indLine] (0mm, 1.5mm) -- (p1.north);
+
+				
+			\end{tikzpicture}
 		\end{column}
 	\end{columns}
 }
-
+ \iffalse
 %------------------------------------------------
 \frame{\frametitle{faces, cofaces, and complexes}
 	\begin{columns}[T]
@@ -615,4 +657,5 @@
 		\end{column}
 	\end{columns}
 }
+\fi
 \end{document}
