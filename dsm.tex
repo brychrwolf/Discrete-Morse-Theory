@@ -125,7 +125,7 @@
 		\end{column}
 	\end{columns}
 }
-\fi
+
 %------------------------------------------------
 \frame{\frametitle{3D Grayscale Digital Images}
 	\begin{columns}[T]
@@ -145,26 +145,32 @@
 	\end{columns}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
-\frame{\frametitle{$K$ and \emph{p-cells}}
+\frame{\frametitle{p-cells}
 	\begin{columns}[T]
-		\begin{column}{.6\textwidth}
-			$K$ is collection of all \emph{p-cells} built from voxels in D, \\
-			with $p = \{0, 1, 2, 3\}$
+		\begin{column}{.5\textwidth}
+			$K$ is collection of all \emph{p-cells} built from voxels in D, with $p = \{0, 1, 2, 3\}$
 			\begin{itemize}
-				\only<1->{
+				\only<1>{
+					\item ({\color{MyTeal}0-cells}) are vertices (i.e. voxels)
+				}\only<2>{
 					\item (0-cells) are vertices (i.e. voxels)
-				}\only<2->{
-					\item (1-cells) are unit edges between voxels %whose coordinates differ by one in a single axis,
-				}\only<3->{ 
-					\item (2-cells) are unit squares,
-				}\only<4->{
-					\item (3-cells) are unit cubes
+					\item ({\color{MyTeal}1-cells}) are unit edges between voxels
+				}\only<3>{ 
+					\item (0-cells) are vertices (i.e. voxels)
+					\item (1-cells) are unit edges between voxels
+					\item ({\color{MyTeal}2-cells}) are unit squares
+				}\only<4>{
+					\item (0-cells) are vertices (i.e. voxels)
+					\item (1-cells) are unit edges between voxels
+					\item (2-cells) are unit squares
+					\item ({\color{MyTeal}3-cells}) are unit cubes
 				}
 			\end{itemize}
 		\end{column}
-		\begin{column}{.4\textwidth}
+		\begin{column}{.5\textwidth}
+			\centering
 			\begin{tikzpicture}[node distance=0mm]
 			\only<1>{
 				\foreach \x in {-12mm,  8mm, 28mm}
@@ -251,11 +257,24 @@
 					\draw[draw=none,fill=MyTeal](-28mm,-24mm) -- (-28mm, 16mm) -- (-12mm, 24mm) -- ( 28mm, 24mm) -- ( 28mm,-16mm) -- ( 12mm,-24mm) -- cycle;
     			\end{pgfonlayer}
 			}
-			\end{tikzpicture}
+			\end{tikzpicture} \\
+			\begin{flushleft}\footnotesize
+				\only<1>{
+					$K = \{$27 0-cells, $\ldots\}$
+				}\only<2>{
+					$K = \{$27 0-cells, 54 1-cells, $\ldots\}$
+				}\only<3>{ 
+					$K = \{$27 0-cells, 54 1-cells, 32 2-cells, $\ldots\}$
+				}\only<4>{
+					$K = \{$27 0-cells, 54 1-cells, 32 2-cells, 8 3-cells$\}$ \\
+					$|K| = 121$
+				}
+			\end{flushleft}
 		\end{column}
 	\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{faces, cofaces, and complexes}
 	\begin{columns}[T]
