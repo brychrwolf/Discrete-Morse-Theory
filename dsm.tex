@@ -338,40 +338,55 @@
 	\end{columns}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Lower Level Cuts}
 	\begin{columns}[T]
-		\begin{column}{.5\textwidth}
+		\begin{column}{.66\textwidth}
 			A {\color{MyTeal}lower level cut} is the set of all voxels with grayscale values less than some threshold $t$:
 			\[ D_t = \{x \in D \rbar g(x) \leq t\}\]
 			or for a cubical complex:
-			\[ K_t = \{ \alpha \in K \rbar g(x) \leq t, \forall x \in \alpha\]
-		\end{column}
-		\begin{column}{.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/gimp/gaussianLandscape.png}\\
-			A Gaussian landscape
+			\[ K_t = \{\alpha \in K \rbar g(x) \leq t, \forall x \in \alpha\}\]
 		\end{column}
 	\end{columns}
 }
 
-\iffalse
+
 %------------------------------------------------
+%TODO: add in persistant homology once slide is made
+\frame{\frametitle{Filtration}
+	\begin{itemize}
+		\item The topology of the lower level cuts changes as the threshold is varied.
+		\begin{itemize}
+			\item $t < \min{g(x) \rbar x \in K}$, $K_t = \{\varnothing\}$; 
+			\item as $t$ increases, cells are added so that \\
+				  for any $t_1 < t_2$, $K_{t_1}$ is a subcomplex of $K_{t_2}$
+			\item $t > \max{g(x) \rbar x \in K}$, $K_t = K$.
+		\end{itemize}
+		\item Such a sequence of nested complexes is called a {\color{MyTeal}filtration}.
+		%\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration.
+	\end{itemize}
+}
+
+%------------------------------------------------
+%TODO:images don't line up correctly
 \frame{\frametitle{Lower Level Cuts of a Gaussian Landscape}
 	\only<1>{
+		$t \geq \max{g(\alpha)}$ \\
+		\centering
+		\includegraphics[width=.8\textwidth]{figures/gimp/gaussianLandscape.png}
+	}\only<2>{
 		$t \sim small$ \\
 		\centering
 		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_a.png}
-	}\only<2>{
+	}\only<3>{
 		$t \sim medium$ \\
 		\centering
 		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_b.png}
-	}\only<3>{
+	}\only<4>{
 		$t \sim large$ \\
 		\centering
 		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_c.png}
-	}\only<4>{
+	}\only<5>{
 		$t \geq \max{g(\alpha)}$ \\
 		\centering
 		\includegraphics[width=.8\textwidth]{figures/gimp/gaussianLandscape.png}
@@ -379,25 +394,11 @@
 }
 
 %------------------------------------------------
-\frame{\frametitle{Main Goal of the Paper}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item Describe how the topology of the lower level cuts changes as the threshold is varied.
-				\begin{itemize}
-					\item $t < \min{g(x) \rbar x \in K}$, $K_t = \{\varnothing\}$; 
-					\item as $t$ increases, cells are added so that for any $t_1 < t_2$, $K_{t_1}$ is a subcomplex of $K_{t_2}$
-					\item $t > \max{g(x) \rbar x \in K}$, $K_t = K$. %we obtain the entire domain of the image
-				\end{itemize}
-				\item Such a sequence of nested complexes is called a {\color{MyTeal}filtration}.
-				\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
-}
+%TODO: populate
+%\frame{\frametitle{Persistant Homology}
+%}
 
+\fi
 %------------------------------------------------
 \frame{\frametitle{Simple Homotopy}
 	%\begin{columns}[T]
@@ -419,6 +420,7 @@
 	%\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Discrete Morse Functions}
 	%\begin{columns}[T]
