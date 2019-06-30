@@ -457,7 +457,6 @@
 	\end{itemize}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{V-Path}
 	A {\color{MyTeal}V-path} is the the flow-line of a vector field in the discrete setting.\\
@@ -470,22 +469,19 @@
 	A V-path is a {\color{MyTeal}non-trival closed V-path} if $\alpha_r = \alpha_0$ for $r \geq 1$. 
 	A discrete vector field is the gradient vector field of a discrete Morse function \emph{if and only if} there are \textbf{no} non-trivial closed V-paths.
 }
-\iffalse
 
 %------------------------------------------------
 \frame{\frametitle{The discrete Morse theory, simple homotopy connection}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item arises from the pairs in the gradient vector field. 
-				\item the {\color{MyTeal}level subcomplex} $K(c)$ includes all cells with $f(\alpha) \leq c$ and all their faces:
-				\item $K(c) = \cup_{f(\alpha) \leq c} \cup_{\gamma \leq \alpha} \gamma$
-				\item a sequence of subcomplexes $K(c_i)$, for increasing values of $c_i$, defines a filtration which relates to simple homotopy theory.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+	arises from the pairs in the gradient vector field. \\
+	\vspace{\baselineskip}
+	\begin{columns}[T]
+		\begin{column}{.9\textwidth}
+			The {\color{MyTeal}level subcomplex} $K(c)$ includes all cells with $f(\alpha) \leq c$ and all their faces:
+			\[K(c) = \cup_{f(\alpha) \leq c} \cup_{\gamma \leq \alpha} \gamma\]
+			\\
+			A sequence of subcomplexes $K(c_i)$, for increasing values of $c_i$, defines a filtration, which \emph{directly relates} to simple homotopy theory.
+		\end{column}
+	\end{columns}
 }
 
 
@@ -497,6 +493,7 @@
 %------------------------------------------------
 %------------------------------------------------
 \section{The Algorithms}
+\fi
 %------------------------------------------------
 \frame{\frametitle{The Algorithms}
 	%\begin{columns}[T]
@@ -511,6 +508,7 @@
 	%	\end{column}
 	%\end{columns}
 }
+\iffalse
 
 %------------------------------------------------
 \frame{\frametitle{Constructing the Discrete Vector Field}
