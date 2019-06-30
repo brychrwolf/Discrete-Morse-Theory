@@ -513,25 +513,18 @@
 	\end{columns}
 }
 
-\fi
 %------------------------------------------------
-\frame{\frametitle{Lower-Star}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item When the $g$-values are unique %details in paper
-				\item we know that the subcomplex $K_{t_i}$ differs from its predecessor in the filtration $K_{t_{i-1}}$ by the single voxel $x_i = g^{-1}(t_i)$ and the 1-, 2- and 3-cells for which $x_i$ is the highest valued voxel.
-				\item This set of cells in the neighbourhood of $x_i$ is called the {\color{MyTeal}lower star}.
-				\item \[ L(x) = \{\alpha \in K \rbar x \in \alpha \text{ and } g(x) = \max_{y \in \alpha}{g(y)}\}\]
-				\item The lower stars of all voxels $x \in D$ form a disjoint partition of $K$.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+\frame{\frametitle{Lower Star}
+	\begin{itemize}
+		%\item When the $g$-values are unique %details in paper
+		\item Each subcomplex $K_{t_i}$ differs from each $K_{t_{i-1}}$ only by the single voxel $x_i = g^{-1}(t_i)$ and the 1-, 2- and 3-cells for which $x_i$ is the highest valued voxel.\\
+		\item This set of cells in the neighbourhood of $x_i$ is called the {\color{MyTeal}lower star}.
+		\[ L(x) = \{\alpha \in K \rbar x \in \alpha \text{ and } g(x) = \max_{y \in \alpha}{g(y)}\}\] \\
+		\item The lower stars of all voxels $x \in D$ form a disjoint partition of $K$.
+	\end{itemize}
 }
-\iffalse
 
+\fi
 %------------------------------------------------
 \frame{\frametitle{ProcessLowerStars}
 	%\begin{columns}[T]
@@ -553,6 +546,7 @@
 	%\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Process Lower Stars - Main Loop (1 of 6)}
 	\begin{columns}[T]
