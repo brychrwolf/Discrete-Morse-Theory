@@ -273,7 +273,6 @@
 	\end{columns}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Faces, Cofaces, and Complexes}
 	\begin{columns}[T]
@@ -295,25 +294,9 @@
 	\end{columns}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
-\frame{\frametitle{lower level cuts}
-	\begin{columns}[T]
-		\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item the set of all voxels with grayscale values less than a threshold $t$, is called a {\color{MyTeal}lower level cut}:
-				\item $D_t = \{x \in D \rvert g(x) \leq t\}$.
-				\item In fact, we will mostly consider level cuts on the cubical complex, where a cell $\alpha$ is included if all its vertices $x \in \alpha$ are below the threshold:
-				\item $K_t = \{ \alpha \in K \rvert g(x) \leq t, \forall x \in \alpha\} $
-				\item which is equivalent to $D_t$ with standard 6-neighborhood of topology, where diagonals are only considered in the presnece of at least one shared standard voxel.
-			\end{itemize}
-		\end{column}
-		\begin{column}{.33\textwidth}
-		\end{column}
-	\end{columns}
-}
-
-%------------------------------------------------
+%TODO:circls for minimum not exactly right
 \frame{\frametitle{Critical Points}
 	\begin{columns}[T]
 		\begin{column}{.25\textwidth}
@@ -351,6 +334,24 @@
 		\end{column}
 		\begin{column}{.5\textwidth}
 			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints.png}
+		\end{column}
+	\end{columns}
+}
+
+\iffalse
+%------------------------------------------------
+\frame{\frametitle{lower level cuts}
+	\begin{columns}[T]
+		\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item the set of all voxels with grayscale values less than a threshold $t$, is called a {\color{MyTeal}lower level cut}:
+				\item $D_t = \{x \in D \rvert g(x) \leq t\}$.
+				\item In fact, we will mostly consider level cuts on the cubical complex, where a cell $\alpha$ is included if all its vertices $x \in \alpha$ are below the threshold:
+				\item $K_t = \{ \alpha \in K \rvert g(x) \leq t, \forall x \in \alpha\} $
+				\item which is equivalent to $D_t$ with standard 6-neighborhood of topology, where diagonals are only considered in the presnece of at least one shared standard voxel.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.33\textwidth}
 		\end{column}
 	\end{columns}
 }
