@@ -31,6 +31,7 @@
 }
 \pgfdeclarelayer{bg}    % declare background layer
 \pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
+\newcommand{\rbar}{\hspace{1ex}\rvert\hspace{1ex}}
 
 \usepackage{beamerthemesplit}
 \usetheme[compress]{Heidelberg}
@@ -131,7 +132,7 @@
 	\begin{columns}[T]
 		\begin{column}{.66\textwidth}
 			$g : D \rightarrow \mathbb{R}$ where $D \subset \mathbb{Z}^3$ is rectangular subset of the discrete lattice$^\dagger$:
-			\[\hspace{2ex}D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} \]
+			\[\hspace{2ex}D = \{(i,j,k) \rbar 0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} \]
 			A point $x \in D$ is called a {\color{MyTeal}voxel} (or pixel in 2D). \\
 			\vspace{3.0\baselineskip}
 			{\color{MyDarkGray}$^\dagger$The equations and algorithms apply with only minor adjustments to 2D digital images.}
@@ -294,7 +295,6 @@
 	\end{columns}
 }
 
-\fi
 %------------------------------------------------
 %TODO:circls for minimum not exactly right
 \frame{\frametitle{Critical Points}
@@ -338,24 +338,25 @@
 	\end{columns}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
-\frame{\frametitle{lower level cuts}
+\frame{\frametitle{Lower Level Cuts}
 	\begin{columns}[T]
-		\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item the set of all voxels with grayscale values less than a threshold $t$, is called a {\color{MyTeal}lower level cut}:
-				\item $D_t = \{x \in D \rvert g(x) \leq t\}$.
-				\item In fact, we will mostly consider level cuts on the cubical complex, where a cell $\alpha$ is included if all its vertices $x \in \alpha$ are below the threshold:
-				\item $K_t = \{ \alpha \in K \rvert g(x) \leq t, \forall x \in \alpha\} $
-				\item which is equivalent to $D_t$ with standard 6-neighborhood of topology, where diagonals are only considered in the presnece of at least one shared standard voxel.
-			\end{itemize}
+		\begin{column}{.5\textwidth}
+			A {\color{MyTeal}lower level cut} is the set of all voxels with grayscale values less than some threshold $t$:
+			\[ D_t = \{x \in D \rbar g(x) \leq t\}\]
+			or for a cubical complex:
+			\[ K_t = \{ \alpha \in K \rbar g(x) \leq t, \forall x \in \alpha\]
 		\end{column}
-		\begin{column}{.33\textwidth}
+		\begin{column}{.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/gaussianLandscape.png}\\
+			A Gaussian landscape
 		\end{column}
 	\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Lower Level Cuts of a Gaussian Landscape}
 	\only<1>{
@@ -384,9 +385,9 @@
 			\begin{itemize}
 				\item Describe how the topology of the lower level cuts changes as the threshold is varied.
 				\begin{itemize}
-					\item $t < \min{g(x) \rvert x \in K}$, $K_t = \{\varnothing\}$; 
+					\item $t < \min{g(x) \rbar x \in K}$, $K_t = \{\varnothing\}$; 
 					\item as $t$ increases, cells are added so that for any $t_1 < t_2$, $K_{t_1}$ is a subcomplex of $K_{t_2}$
-					\item $t > \max{g(x) \rvert x \in K}$, $K_t = K$. %we obtain the entire domain of the image
+					\item $t > \max{g(x) \rbar x \in K}$, $K_t = K$. %we obtain the entire domain of the image
 				\end{itemize}
 				\item Such a sequence of nested complexes is called a {\color{MyTeal}filtration}.
 				\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration.
@@ -428,9 +429,9 @@
 					\item $f$ takes a value less than or equal to $f(\alpha)$ on at most one coface of $\alpha$, and 
 					\item $f$ takes a value greater than or equal to $f(\alpha)$ on at most one face of $\alpha$. In other words,
 				\end{itemize}
-				\item $\# \{\beta^{(p+1)} > \alpha \rvert f(\beta) \leq  f(\alpha)\} \leq 1,$
+				\item $\# \{\beta^{(p+1)} > \alpha \rbar f(\beta) \leq  f(\alpha)\} \leq 1,$
 				\item and 
-				\item $\# \{\gamma^{(p-1)} < \alpha \rvert f(\gamma) \geq  f(\alpha)\} \leq 1,$
+				\item $\# \{\gamma^{(p-1)} < \alpha \rbar f(\gamma) \geq  f(\alpha)\} \leq 1,$
 				\item where $\#$ denotes the number of elements in the set. 
 				\item A cell, $\alpha^{(p)}$ is {\color{MyTeal}critical} if all cofaces take strictly greater values and all faces are strictly lower.
 			\end{itemize}
@@ -561,7 +562,7 @@
 				\item When the $g$-values are unique %details in paper
 				\item we know that the subcomplex $K_{t_i}$ differs from its predecessor in the filtration $K_{t_{i-1}}$ by the single voxel $x_i = g^{-1}(t_i)$ and the 1-, 2- and 3-cells for which $x_i$ is the highest valued voxel.
 				\item This set of cells in the neighbourhood of $x_i$ is called the {\color{MyTeal}lower star}.
-				\item \[ L(x) = \{\alpha \in K \rvert x \in \alpha \text{ and } g(x) = \max_{y \in \alpha}{g(y)}\}\]
+				\item \[ L(x) = \{\alpha \in K \rbar x \in \alpha \text{ and } g(x) = \max_{y \in \alpha}{g(y)}\}\]
 				\item The lower stars of all voxels $x \in D$ form a disjoint partition of $K$.
 			\end{itemize}
 	%	\end{column}
