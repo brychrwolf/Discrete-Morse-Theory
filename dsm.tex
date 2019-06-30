@@ -412,7 +412,6 @@
 	\end{itemize}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Discrete Morse Functions}
 	A function, $f : K \rightarrow \mathbb{R}$ is a {\color{MyTeal}discrete Morse function} if %for every $\alpha^{(p)} \in K$, 
@@ -429,32 +428,26 @@
 	A cell, $\alpha^{(p)}$ is {\color{MyTeal}critical} if all cofaces take strictly greater function values, and all faces take values which are strictly lower.
 }
 
-\iffalse
 %------------------------------------------------
 \frame{\frametitle{Non-Critical Cells}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item A cell $\alpha$ can only fail to be critical in two possible ways, either there can exist
-				\begin{itemize}
-					\item a $\gamma < \alpha$ such that $f(\gamma) \geq f(\alpha)$, or
-					\item a $\beta > \alpha$ such that $f(\beta) \leq f(\alpha)$. 
-				\end{itemize}
-				\item these two possibilities cannot be true simultaneously for a given cell $\alpha$. 
-				\item Thus each non-critical cell $\alpha$ may be paired either with 
-				\begin{itemize}
-					\item a non-critical cell that is a coface of $\alpha$, or
-					\item a non-critical cell that is a face of $\alpha$.
-				\end{itemize}
-				\item It is not easy to construct discrete Morse functions on a given complex!
-				%\item it is usually simpler to work with a discrete vector field.
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
+	\begin{itemize}
+		\item A cell $\alpha$ can only fail to be critical in two possible ways, either there can exist
+		\begin{itemize}
+			\item a face $\gamma < \alpha$ such that $f(\gamma) \geq f(\alpha)$, or
+			\item a coface $\beta > \alpha$ such that $f(\beta) \leq f(\alpha)$. 
+		\end{itemize}
+		\item which are mutually exclusive for a given cell $\alpha$, so each non-critical cell $\alpha$ may be paired either with 
+		\begin{itemize}
+			\item a non-critical cell that is a coface of $\alpha$, or
+			\item a non-critical cell that is a face of $\alpha$.
+		\end{itemize}
+		%\item it is usually simpler to work with a discrete vector field.
+	\end{itemize}
+	\vspace{\baselineskip}
+	\emph{The combinatory nature of complexes makes this difficult!}
 }
 
+\fi
 %------------------------------------------------
 \frame{\frametitle{Discrete vector fields}
 	%\begin{columns}[T]
@@ -471,6 +464,7 @@
 	%\end{columns}
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{V-Path}
 	%\begin{columns}[T]
