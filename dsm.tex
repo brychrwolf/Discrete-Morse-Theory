@@ -32,9 +32,6 @@
 \pgfdeclarelayer{bg}    % declare background layer
 \pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer)
 
-\usepackage[acronym]{glossaries}
-\makeglossaries
-
 \usepackage{beamerthemesplit}
 \usetheme[compress]{Heidelberg}
 \definecolor{unirot}{rgb}{0.5976525,0,0}
@@ -52,7 +49,6 @@
 \date{\today}
 
 \begin{document}
-%\input{chapters/Z2-Glossary.tex}
 \setlength{\intextsep}{0pt}
 \def\hilite<#1>{\temporal<#1>{\color{black}}{\color{unirot}}{\color{gray}}}
 
@@ -277,7 +273,6 @@
 }
 \fi
 %------------------------------------------------
-%TODO: add images for lower level cuts
 \frame{\frametitle{lower level cuts}
 	\begin{columns}[T]
 		\begin{column}{.66\textwidth}
@@ -293,7 +288,70 @@
 		\end{column}
 	\end{columns}
 }
-\iffalse
+
+%------------------------------------------------
+\frame{\frametitle{Critical Points}
+	\begin{columns}[T]
+		\begin{column}{.25\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints_minimum.png}\\
+			Minimum $\bigcirc\hspace{-1.65ex}\circ$
+		\end{column}
+		\begin{column}{.25\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints_saddle.png}\\
+			Saddle $\oplus$
+		\end{column}
+		\begin{column}{.25\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints_maximum.png}\\
+			Maximum $\odot$
+		\end{column}
+		\begin{column}{.25\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints_monkeySaddle.png}\\
+			Monkey Saddle $\otimes$
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Gaussian Landscape}
+	\begin{columns}[T]
+		\begin{column}{.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figures/gimp/gaussianLandscape.png} \\
+			3 minima (lakes) \\
+			15 saddles (passes) \\
+			13 maxima (peaks)
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\includegraphics[width=\textwidth]{figures/gimp/criticalPoints.png}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Lower Level Cuts of a Gaussian Landscape}
+	\only<1>{
+		$t \sim small$ \\
+		\centering
+		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_a.png}
+	}\only<2>{
+		$t \sim medium$ \\
+		\centering
+		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_b.png}
+	}\only<3>{
+		$t \sim large$ \\
+		\centering
+		\includegraphics[width=.8\textwidth]{figures/gimp/excursionSet_c.png}
+	}\only<4>{
+		$t \geq \max{g(\alpha)}$ \\
+		\centering
+		\includegraphics[width=.8\textwidth]{figures/gimp/gaussianLandscape.png}
+	}
+}
+
 %------------------------------------------------
 \frame{\frametitle{Main Goal of the Paper}
 	%\begin{columns}[T]
@@ -695,5 +753,4 @@
 		\end{column}
 	\end{columns}
 }
-\fi
 \end{document}

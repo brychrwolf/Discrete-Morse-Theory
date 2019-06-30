@@ -9,7 +9,16 @@ XCFS_OUTPUTS =  processLowerStars_voxel_a.png \
 				sandstone_b.png \
 				sandstone_c.png \
 				sandstone_d.png \
-				foam.png
+				foam.png \
+				excursionSet_a.png \
+				excursionSet_b.png \
+				excursionSet_c.png \
+				gaussianLandscape.png \
+				criticalPoints.png \
+				criticalPoints_minimum.png \
+				criticalPoints_saddle.png \
+				criticalPoints_maximum.png \
+				criticalPoints_monkeySaddle.png
 
 all: $(XCFS_OUTPUTS)
 
