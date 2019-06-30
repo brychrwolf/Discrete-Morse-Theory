@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169,t]{beamer}
 \usefonttheme[onlymath]{serif}
+\input{myColors.tex}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{subcaption}
@@ -61,7 +62,6 @@
 \date{\today}
 
 \begin{document}
-%\input{myCommands.tex}
 %\input{chapters/Z2-Glossary.tex}
 \setlength{\intextsep}{0pt}
 \def\hilite<#1>{\temporal<#1>{\color{black}}{\color{unirot}}{\color{gray}}}
@@ -73,31 +73,27 @@
 	\titlepage
 }
 
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Outline}
 	%\tableofcontents[hideallsubsections]
 	\begin{itemize}
 		\item Motivation \& Introduction \pause
+		\item Background
+		\begin{itemize}
+			\item Digital Images as Cubical Complexes
+			\item Morse Theory
+		\end{itemize} \pause
 		\item Discrete Morse Theory
-		%\begin{itemize}
-		%	\item Mathematical Foundation
-		%	\item Serial Algorithm
-		%\end{itemize} \pause
-		%\item Exploiting Parallelism
-		%\begin{itemize}
-		%	\item Basics
-		%	\item Analysis of the Serial Algorithm
-		%	\item Parallel Algorithm
-		%\end{itemize} \pause
-		%\item Experiments \& Evaluation
-		%\begin{itemize}
-		%	\item Filter Response on Synthetic and Acquired \tdd{}
-		%	\item Performance of the Parallel Algorithm
-		%\end{itemize} \pause
-		\item Conclusions
+		\begin{itemize}
+			\item "Dicrete Vector Fields"
+			\item difference to a continuous version
+			\item especially when looking for critical cells.
+		\end{itemize} \pause
+		\item Examples \& Conclusions
 	\end{itemize}
 }
-
+\fi
 
 
 
@@ -105,6 +101,262 @@
 %================================================
 \section{Motivation \& Introduction}
 
+%------------------------------------------------
+\frame{\frametitle{Motivation}
+	\begin{columns}[T]
+		\begin{column}{.33\textwidth}
+%			quantitative analysis of large 3D images. 
+%			geometric: volume, surface area, curvature
+%			Topological information is independent of geometric measures
+%			however, computational topology require a combinatorial complex (huge)
+%
+%			A grayscale digital image, which are functions defined on a discrete lattice
+%			cubical Complex, scale as O(n^3)
+%			Morse complex same topological information, encodes topo.changes in level sets
+%
+%			Morse Theory
+%				partions landscape into hills and dales
+%				relates critical points to topology of manifold using negative gradient flow
+%				Cells in Morse Complex defined by uniform flow behavior
+%					Stable  manifolds:
+%					droplets flow to same minimums (dales and basins)
+%					boundries between basins are ridgeline passing thorugh saddles
+%					maxima point where several basins touch
+%					Unstable: 
+%					regions where flow lines have same origin
+%					intersection of two = Morse-Smale copmlex
+%			
+%			Continuous into discrete involves:
+%				adapting to non-smooth unctions and manifolds
+%				defining critical points
+%				approx. gradient flow
+%				devising efficient algs.
+				
+%			Discrete Morse Theory by Forman
+%				gradient arrows one-to-one pairing of cells with faces
+%				unpaired cells are critical points
+%				<prese Cpm[lex arise from flow path between critical cells
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{3D Grayscale Digital Images}
+	\begin{columns}[T]
+		\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item $g : D \rightarrow \mathbb{R} $
+				\item where $D \subset \mathbb{Z}^3 $ is rectangular subset of the discrete lattice:
+				\item $D = \{(i,j,k)\hspace{1ex}\rvert\hspace{1ex}0 \leq i \leq I,\hspace{1ex} 0 \leq j \leq J,\hspace{1ex} 0 \leq k \leq K\} $
+				\item A point $x \in D$ is called a {\color{MyTeal}voxel} (or pixel in 2D).
+				%The algorithms presented in Section 3 apply without adjustment to 2D digital images.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.33\textwidth}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+%TODO: add animated K with colors as each p-cell comes out
+\frame{\frametitle{$K$ and \emph{p-cells}}
+	\begin{columns}[T]
+		\begin{column}{.66\textwidth}
+			$K$ is collection of all \emph{p-cells} built from voxels in D, with $p = \{0, 1, 2, 3\}$
+			\begin{itemize}
+				\item (0-cells) are vertices (i.e. voxels)
+				\item (1-cells) are unit edges between voxels %whose coordinates differ by one in a single axis, 
+				\item (2-cells) are unit squares,
+				\item (3-cells) are unit cubes
+			\end{itemize}
+		\end{column}
+		\begin{column}{.33\textwidth}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{faces, cofaces, and complexes}
+	\begin{columns}[T]
+		\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item $\alpha^{(p)}$ is a cell of p-th dimension
+				\item A cell $\alpha^{(p)} \in K$ is a {\color{MyTeal}face} of another cell $\beta^{(q)}$ if:
+				\begin{itemize}
+					\item $p < q$, and 
+					\item the vertices of $\alpha$ are a subset of the vertices of $\beta$
+					\item written as $\alpha^{(p)} < \beta^{(q)}$. 
+				\end{itemize}
+				\item We can also say that $\beta$ is a {\color{MyTeal}coface} of $\alpha$.
+				\item A set of cells $S \subset K$ is a {\color{MyTeal}complex}, if for any $\alpha \in S$, all its faces are also in $S$.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.33\textwidth}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+%TODO: add images for lower level cuts
+\frame{\frametitle{lower level cuts}
+	\begin{columns}[T]
+		\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item the set of all voxels with grayscale values less than a threshold $t$, is called a {\color{MyTeal}lower level cut}:
+				\item $D_t = \{x \in D \rvert g(x) \leq t\}$.
+				\item In fact, we will mostly consider level cuts on the cubical complex, where a cell $\alpha$ is included if all its vertices $x \in \alpha$ are below the threshold:
+				\item $K_t = \{ \alpha \in K \rvert g(x) \leq t, \forall x \in \alpha\} $
+				\item which is equivalent to $D_t$ with standard 6-neighborhood of topology, where diagonals are only considered in the presnece of at least one shared standard voxel.
+			\end{itemize}
+		\end{column}
+		\begin{column}{.33\textwidth}
+		\end{column}
+	\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Main Goal of the Paper}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item Describe how the topology of the lower level cuts changes as the threshold is varied.
+				\begin{itemize}
+					\item $t < \min{g(x) \rvert x \in K}$, $K_t = \{\varnothing\}$; 
+					\item as $t$ increases, cells are added so that for any $t_1 < t_2$, $K_{t_1}$ is a subcomplex of $K_{t_2}$
+					\item $t > \max{g(x) \rvert x \in K}$, $K_t = K$. %we obtain the entire domain of the image
+				\end{itemize}
+				\item Such a sequence of nested complexes is called a {\color{MyTeal}filtration}.
+				\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Simple Homotopy}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item Definitions are given for cubical complexes, but can be extended to general CW complexes.
+				\item For a cubical complex $K$ with cell $\beta{(p)}$, we say that has a {\color{MyTeal}free face} $\alpha^{(p-1)}$ if $\alpha$ is a face of $\beta$, and $\alpha$ has no other cofaces.
+				\item We call $(\alpha, \beta)$ a {\color{MyTeal}free pair}. 
+				\item If we remove a free pair from $K$, we obtain a subcomplex of $K$ that is called an {\color{MyTeal}elementary collapse} of K.
+				\item We say that a cubical complex $K$ {\color{MyTeal}collapses} to a subcomplex $K'$ if there is a finite sequence of elementary collapses from $K$ to $K'$. 
+				\item If a cubical complex collapses to a point it is {\color{MyTeal}collapsible}.
+				\item The inverse of a collapse is an {\color{MyTeal}expansion}. 
+				\item We say that two cubical complexes are {\color{MyTeal}simple homotopy equivalent} if there is a sequence of collapses and expansions from one complex to the other. 
+				\item An elementary collapse determines a strong deformation retraction. It therefore follows that if two cubical complexes are simple homotopy equivalent, then they are homotopy equivalent. 
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Discrete Morse Functions}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item A function, $f : K \rightarrow \mathbb{R}$ is a {\color{MyTeal}discrete Morse function} if for every $\alpha^{(p)} \in K$, 
+				\begin{itemize}
+					\item $f$ takes a value less than or equal to $f(\alpha)$ on at most one coface of $\alpha$, and 
+					\item $f$ takes a value greater than or equal to $f(\alpha)$ on at most one face of $\alpha$. In other words,
+				\end{itemize}
+				\item $\# \{\beta^{(p+1)} > \alpha \rvert f(\beta) \leq  f(\alpha)\} \leq 1,$
+				\item and 
+				\item $\# \{\gamma^{(p-1)} < \alpha \rvert f(\gamma) \geq  f(\alpha)\} \leq 1,$
+				\item where $\#$ denotes the number of elements in the set. 
+				\item A cell, $\alpha^{(p)}$ is {\color{MyTeal}critical} if all cofaces take strictly greater values and all faces are strictly lower.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Non-Critical Cells}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item A cell $\alpha$ can only fail to be critical in two possible ways, either there can exist
+				\begin{itemize}
+					\item a $\gamma < \alpha$ such that $f(\gamma) \geq f(\alpha)$, or
+					\item a $\beta > \alpha$ such that $f(\beta) \leq f(\alpha)$. 
+				\end{itemize}
+				\item these two possibilities cannot be true simultaneously for a given cell $\alpha$. 
+				\item Thus each non-critical cell $\alpha$ may be paired either with 
+				\begin{itemize}
+					\item a non-critical cell that is a coface of $\alpha$, or
+					\item a non-critical cell that is a face of $\alpha$.
+				\end{itemize}
+				\item It is not easy to construct discrete Morse functions on a given complex!
+				%\item it is usually simpler to work with a discrete vector field.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{Discrete vector fields}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item A {\color{MyTeal}discrete vector field} $V$ is a collection of pairs $\{\alpha^{(p)} < \beta^{(p+1)}\}$ of cells in $K$ such that each cell is in at most one pair of $V$. 
+				\item A discrete Morse function defines a discrete vector field by pairing $\alpha^{(p)} < \beta^{(p+1)}$ whenever $f(\beta) \leq f(\alpha)$. 
+				\item The critical cells are precisely those that do not appear in any pair. 
+				\item Discrete vector fields that arise from Morse functions are called {\color{MyTeal}gradient vector fields}.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{V-Path}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item A {\color{MyTeal}V-path} is the the flow-line of a vector field in the discrete setting.
+				\item It is a sequence of cells: $\alpha^{(p)}_0, \beta^{(p+1)}_0, \alpha^{(p)}_1, \beta^{(p+1)}_1, \alpha^{(p)}_2, \ldots, \beta^{(p+1)}_{r-1}, \alpha^{(p)}_r $.
+				\item where $(\alpha_i, \beta_i) \in V, \beta_i > \alpha_{i+1}$, and $\alpha_i \neq \alpha_{i+1}$ for all $i = 0, \ldots, r-1$. 
+				\item A V-path is a {\color{MyTeal}non-trival closed V-path} if $\alpha_r = \alpha_0$ for $r \geq 1$. 
+				\item A discrete vector field is the gradient vector field of a discrete Morse function \emph{if and only if} there are \textbf{no} non-trivial closed V-paths.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+%------------------------------------------------
+\frame{\frametitle{The discrete Morse theory, simple homotopy connection}
+	%\begin{columns}[T]
+	%	\begin{column}{.66\textwidth}
+			\begin{itemize}
+				\item arises from the pairs in the gradient vector field. 
+				\item the {\color{MyTeal}level subcomplex} $K(c)$ includes all cells with $f(\alpha) \leq c$ and all their faces:
+				\item $K(c) = \cup_{f(\alpha) \leq c} \cup_{\gamma \leq \alpha} \gamma$
+				\item a sequence of subcomplexes $K(c_i)$, for increasing values of $c_i$, defines a filtration which relates to simple homotopy theory.
+			\end{itemize}
+	%	\end{column}
+	%	\begin{column}{.33\textwidth}
+	%	\end{column}
+	%\end{columns}
+}
+
+
+%Lemma 1: If there are no critical simplices \alpha with f (\alpha) 2 (a, b], then K(b) collapses to K(a). The sequence of elementary collapses are defined by pairs (\alpha(p), (p+1) ) from the gradient vector field. Alternatively, if level subcomplexes (p) K(a) and K(b) differ by a single critical p-cell, , then we can define an attaching map on the boundary of (see Theorem 3.4 of [14]). Thus, a discrete Morse function on a cubical complex induces a CW-complex (Corollary 3.5 of [14]). Lemma 2: Let K be a cubical complex with discrete Morse function f . Then K is homotopy equivalent to a CW-complex X with exactly one cell of dimension p for each critical cell in K of dimension p. K We now define a discrete analogue of what is sometimes known as the “Thom-Smale-Witten” complex [29]. The result is an abstract chain complex that Forman calls the Morse complex, and that we call the Morse chain complex. Let Cp (K, Z2 ) be the group of p-chains with Z2 coefficients (see Sec. 2.2). Let Mp ✓ Cp (K, Z2 ) be the subgroup generated by the critical p-cells. We define a boundary map @p : Mp ! Mp 1 as follows. For any critical p-cell set @ = \alpha2Mp X 1 c\alpha, \alpha.  (5) The coefficients c\alpha, encapsulate the induced orientations and number of V -paths between the maximal (i.e. co-dimension-1) faces of and the critical (p 1)-cell \alpha, and are defined as follows. Let ( , \alpha) be the set of all V -paths from maximal faces of to \alpha. Because we compute homology with Z2 coefficients, orientations are ignored and c\alpha, =  ( 1 0 if if # # ( ( , , \alpha) \alpha) is is even.  odd,  (6) With the boundary operator so defined, we have the following result (see Section 8 of [14], or Section 7 of [15]). Theorem 3: Let Mp be the chain group of critical p- cells. The Morse chain complex 0 ! Mn !  @ n  Mn  1  @n  !1  . . . ! @ 0 M0 ! 0  (7) calculates the homology of K. That is, if we define Ker @p Hp(M, @) = Im @p+1 then for each p, Hp (M, @) ⇠  = Hp (K, Z2). This theorem implies that the persistent homology of the digital image can be computed from the Morse chain complex.
+
+
+
+\iffalse
 %------------------------------------------------
 \frame{\frametitle{Process Lower Stars - Voxel (1 of 2)}
 	\begin{columns}[T]
@@ -190,4 +442,5 @@
 		\end{column}
 	\end{columns}
 }
+\fi
 \end{document}
