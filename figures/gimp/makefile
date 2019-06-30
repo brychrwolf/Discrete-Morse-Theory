@@ -14,7 +14,7 @@ XCFS_OUTPUTS =  processLowerStars_voxel_a.png \
 all: $(XCFS_OUTPUTS)
 
 %.png: %.xcf
-	convert $< $@
+	convert $< -flatten $@
 
 
 
