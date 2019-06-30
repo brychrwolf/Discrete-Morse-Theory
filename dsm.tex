@@ -513,7 +513,6 @@
 	\end{columns}
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{Lower Stars}
 	\begin{itemize}
@@ -529,12 +528,13 @@
 	\end{itemize}
 }
 
-\iffalse
+\fi
 %------------------------------------------------
 \frame{\frametitle{Process Lower Stars - Main Loop (1 of 6)}
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{8, 81, 82, 83, 8432, 86, 8653, 8762\}$ \\
+			$L'(8) = \{\varnothing\}$ \\
 			$C = \{\varnothing\}$ \\
 			$V = \{\varnothing\}$ \\
 			$PQone \hspace{.9ex}= \{\varnothing\}$ \\
@@ -553,6 +553,7 @@
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{\hcancel[MyCoral]{8, 81}, 82, 83, 8432, 86, 8653, 8762\}$ \\
+			$L'(8) = \{81, 8\}$ \\
 			$C = \{\varnothing\}$ \\
 			$V = \{{\color{MyTeal}81, 8}\}$ \\
 			$PQone \hspace{.9ex}= \{\varnothing\}$ \\
@@ -574,6 +575,7 @@
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{\hcancel[MyCoral]{8, 81, 82, 83}, 8432, \hcancel[MyCoral]{86}, 8653, 8762\}$ \\
+			$L'(8) = \{81, 8, 82\}$ \\
 			$C = \{{\color{MyTeal}82}\}$ \\
 			$V = \{81, 8\}$ \\
 			$PQone \hspace{.9ex}= \{\varnothing\}$ \\
@@ -597,6 +599,7 @@
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{\hcancel[MyCoral]{8, 81, 82, 83, 8432, 86}, 8653, \hcancel[MyCoral]{8762}\}$ \\
+			$L'(8) = \{81, 8, 82, 8432, 83\}$ \\
 			$C = \{82\}$ \\
 			$V = \{81, 8, {\color{MyTeal}8432, 83}\}$ \\
 			$PQone \hspace{.9ex}= \{{\color{MyTeal}\hcancel[MySand]{8432}, 8762}\}$ \\
@@ -607,7 +610,7 @@
 				\setcounter{enumi}{3}
 				\item Edge 82 has two cofaces 8432 and 8762 that are added to $PQone$.
 				\item Square 8432 is popped from $PQone$, it is paired with its free face, edge 83.
-			\end{enumerate}
+			\end{enumerate} 
 		\end{column}
 		\begin{column}{.4\textwidth}
 			\includegraphics[width=\textwidth]{figures/gimp/processLowerStars_voxel_d.png}
@@ -620,6 +623,7 @@
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{\hcancel[MyCoral]{8, 81, 82, 83, 8432, 86, 8653, 8762}\}$ \\
+			$L'(8) = \{81, 8, 82, 8432, 83, 8653, 86\}$ \\
 			$C = \{82\}$ \\
 			$V = \{81, 8, 8432, 83, {\color{MyTeal}8653, 86}\}$ \\
 			$PQone \hspace{.9ex}= \{\hcancel[MySand]{{\color{MyTeal}8653}}, 8762\}$ \\
@@ -643,6 +647,7 @@
 	\begin{columns}[T]
 		\begin{column}{.6\textwidth}
 			$L(8) = \{\hcancel[MyCoral]{8, 81, 82, 83, 8432, 86, 8653, 8762}\}$ \\
+			$L'(8) = \{81, 8, 82, 8432, 83, 8653, 86, 8762\}$ \\
 			$C = \{82, {\color{MyTeal}8762}\}$ \\
 			$V = \{81, 8, 8432, 83, 8653, 86\}$ \\
 			$PQone \hspace{.9ex}= \{\hcancel[MySand]{8762}\}$ \\
@@ -659,6 +664,7 @@
 		\end{column}
 	\end{columns}
 }
+\iffalse
 
 
 
