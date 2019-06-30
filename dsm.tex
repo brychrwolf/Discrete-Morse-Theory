@@ -513,37 +513,20 @@
 	\end{columns}
 }
 
+\fi
 %------------------------------------------------
-\frame{\frametitle{Lower Star}
+\frame{\frametitle{Lower Stars}
 	\begin{itemize}
 		%\item When the $g$-values are unique %details in paper
 		\item Each subcomplex $K_{t_i}$ differs from each $K_{t_{i-1}}$ only by the single voxel $x_i = g^{-1}(t_i)$ and the 1-, 2- and 3-cells for which $x_i$ is the highest valued voxel.\\
 		\item This set of cells in the neighbourhood of $x_i$ is called the {\color{MyTeal}lower star}.
 		\[ L(x) = \{\alpha \in K \rbar x \in \alpha \text{ and } g(x) = \max_{y \in \alpha}{g(y)}\}\] \\
-		\item The lower stars of all voxels $x \in D$ form a disjoint partition of $K$.
+		%\item The lower stars of all voxels $x \in D$ form a disjoint partition of $K$.
+		\vspace{\baselineskip}
+		\item The algorithm \emph{ProcessLowerStars} finds a sequence for adding the cells from $L(x_i)$ to $K_{t_{i-1}}$ to grow it into $K_{t_i}$
+		\item It requires two priority queues, both require an ordering
+		\[ G(\alpha) = (g(x), g(y_{i_1}), \dots, g(y_{i_k})) \text{ where } g(x) > g(y_{i_1}) > \ldots > g(y_{i_k}) \] 
 	\end{itemize}
-}
-
-\fi
-%------------------------------------------------
-\frame{\frametitle{ProcessLowerStars}
-	%\begin{columns}[T]
-	%	\begin{column}{.66\textwidth}
-			\begin{itemize}
-				\item finds a sequence for adding the cells from $L(x_i)$ to $K_{t_{i-1}}$ to grow it into $K_{t_i}$%, for each voxel $x_i$. 
-				%\item To avoid spurious critical cells, our algorithm aims to leave a minimal number of cells unpaired. This is achieved by utilising simple homotopic expansions where possible. 
-				\item Since pairing occurs only between cells in the same lower star, each lower star can be treated independently, in parallel if need be. 
-				%\item C and V (the lists of critical cells and discrete vector field pairs). 
-				%\item When there is a single available unpaired face for the cell $\alpha$, we call this face {\color{MyTeal}$pair(\alpha)$}. 
-				\item ProcessLowerStars is based on two priority queues of cells, PQone and PQzero, which require an ordering, $G(\alpha)$, of the cells in each lower star. 
-				\item Any ordering based primarily on the maximal g value of the vertices of the cell and in which a cell is ranked after its faces will suffice, i.e. lexicographic ordering:
-				\item Given $\alpha \in L(x)$, with vertices ${x, y_1, \ldots, y_k}$, define
-					\[ G(\alpha) = (g(x), g(y_{i_1}), \dots, g(y_{i_k})) \text{ where } g(x) > g(y_{i_1}) > \ldots > g(y_{i_k}) \] 
-			\end{itemize}
-	%	\end{column}
-	%	\begin{column}{.33\textwidth}
-	%	\end{column}
-	%\end{columns}
 }
 
 \iffalse
