@@ -58,6 +58,7 @@
 	\titlepage
 }
 
+
 %------------------------------------------------
 \frame{\frametitle{Outline}
 	\begin{itemize}
@@ -81,7 +82,7 @@
 		\end{itemize}
 	\end{itemize}
 }
-\iffalse
+
 %================================================
 %================================================
 \section{Motivation \& Background}
@@ -342,7 +343,6 @@
 
 
 %------------------------------------------------
-%TODO: add in persistant homology once slide is made
 \frame{\frametitle{Filtration}
 	\begin{itemize}
 		\item The topology of the lower level cuts changes as the threshold is varied.
@@ -353,7 +353,7 @@
 			\item $t > \max{g(x) \rbar x \in K}$, $K_t = K$.
 		\end{itemize}
 		\item Such a sequence of nested complexes is called a {\color{MyTeal}filtration}.
-		%\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration.
+		\item The changes in topology are quantified by computing the {\color{MyTeal}persistent homology} of the filtration. 
 	\end{itemize}
 }
 
@@ -463,7 +463,6 @@
 	A discrete vector field is the gradient vector field of a discrete Morse function \emph{if and only if} there are \textbf{no} non-trivial closed V-paths.
 }
 
-\fi
 %------------------------------------------------
 \frame{\frametitle{The discrete Morse theory, simple homotopy connection}
 	arises from the pairs in the gradient vector field. \\
@@ -510,28 +509,36 @@
 		from which persistent homology may be calculated.
 	\end{itemize}
 }
-\iffalse
+
 
 
 %================================================
 %================================================
 \section{Examples \& Conclusions}
 %------------------------------------------------
-%\frame{\frametitle{The Algorithms}
-%	\begin{enumerate}
-		%\item Our approach to characterizing the topology of the level cuts of a grayscale function proceeds in two stages. 
-%		\item First we construct a discrete vector field on the cubical cell complex using simple-homotopy expansions; 
-%		\item we use this vector field to build the Morse chain complex by following V-paths.
-%	\end{enumerate}
-%}
+\frame{\frametitle{The Algorithms}
+	\begin{columns}[T]
+		\begin{column}{.15\textwidth}
+			\includegraphics[width=\textwidth]{figures/shootingstar.png} \\	
+			\vspace{\baselineskip}
+			\includegraphics[width=\textwidth]{figures/chain.png}
+		\end{column}
+		\begin{column}{.85\textwidth} 
+			\emph{ProcessLowerStars} constructs a discrete vector field on the cubical cell complex using simple-homotopy expansions \\
+			\vspace{3\baselineskip}
+			\emph{ExtractMorseComplex} uses this vector field to build the Morse chain complex by following V-paths.
+		\end{column}
+	\end{columns}
+}
+
 
 %------------------------------------------------
 \frame{\frametitle{Constructing the Discrete Vector Field}
 	\begin{columns}[T]
 		\begin{column}{.7\textwidth}
-				\textbf{The goal}: construct a discrete Morse function on the $K$, whose critical cells exactly match the changes in topology between successive elements of a filtration of $K$.\\
-				\vspace{\baselineskip}
-				\textbf{The method}: use simple homotopy expansions to grow from one subcomplex to the next, introducing critical cells only when a simple homotopy pairing cannot be found.
+			\textbf{The goal}: construct a discrete Morse function on the $K$, whose critical cells exactly match the changes in topology between successive elements of a filtration of $K$.\\
+			\vspace{\baselineskip}
+			\textbf{The method}: use simple homotopy expansions to grow from one subcomplex to the next, introducing critical cells only when a simple homotopy pairing cannot be found.
 		\end{column}
 	\end{columns}
 }
@@ -766,5 +773,5 @@
 		\end{itemize}
 	\end{itemize}		
 }
-\fi
+
 \end{document}
